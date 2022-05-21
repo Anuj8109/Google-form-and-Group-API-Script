@@ -15,13 +15,7 @@ DISCOVERY_DOC = "https://forms.googleapis.com/$discovery/rest?version=v1"
 
 store = file.Storage('token.json')
 creds = None
-## We login every time in authentication not save token for security puspose
-# if os.path.exists('token.json'):
-#         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
-#         print(creds)
-# if not creds or not creds.valid:
-#     flow = client.flow_from_clientsecrets('client_secrets.json', SCOPES)
-#     creds = tools.run_flow(flow, store)
+
 if os.path.exists('token.json'):
     creds = Credentials.from_authorized_user_file('token.json', SCOPES)
     # If there are no (valid) credentials available, let the user log in.
@@ -39,7 +33,7 @@ form_id = '11ZRHWXVtCpe9nH9IY-bI5Mo4jPjY5utMKptqiIqXPZU'
 f = open('date.txt','r') #date where we want results
 N = f.readline()
 N = str(N)
-## Few times filter not work beacause of incorrect timestamp format and timestamp must be formatted in RFC3339 UTC "Zulu" format
+## Filter not work beacause of incorrect timestamp format and timestamp must be formatted in RFC3339 UTC "Zulu" format and so not used now
 result = service.forms().responses().list(formId=form_id).execute()
 emails = []
 # print(result['responses'])

@@ -28,16 +28,6 @@ def main(emails):
     
     service = build('admin', 'directory_v1', credentials=creds)
 
-
-    # body = {
-    #      "primaryEmail": "uma04599@example.com".format(firstname="Uma", secondname="04599"),
-    #    }
-
-    # # Execute Add User
-    # user_add = service.users().insert(body=body).execute()
-
-    # body_group = {"email": "uma04599@example.com".format(firstname="Uma", secondname="04599")}
-    # add_group = service.members().insert(body=body_group).execute()
     for email in emails:
         group_result = service.groups().insert(body={
                             'groupKey': 'elitmus798', # group key
